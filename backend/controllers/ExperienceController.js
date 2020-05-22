@@ -26,3 +26,16 @@ exports.createOne = (req, res) => {
       res.status(400).json({message: err});
     });
 };
+
+exports.updateOne = (req, res) => {
+  const experience = {
+    title: req.body.title,
+    subtitle: req.body.subtitle,
+    thumbnail: req.body.thumbnail,
+    date: req.body.date,
+  };
+
+  Experience.findByIdAndUpdate(req.params.experienceId, experience)
+    .then(() => res.status(200).json('Updated !'))
+    .catch((err) => res.status(400).json({message: err}));
+};
