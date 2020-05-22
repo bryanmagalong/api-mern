@@ -4,10 +4,10 @@ require ('dotenv/config');
 
 const app = express();
 
-//== Routes
-app.get('/', (req, res) => {
-    res.send('Hello World !');
-});
+//== Routes import
+const mainRoute = require('./routes/main');
+
+app.use('/', mainRoute);
 
 //== DB connection
 mongoose.connect(
@@ -20,6 +20,6 @@ mongoose.connect(
 )
   .then(() => console.log('Connection to db succeeded !'))
   .catch(() => console.log('Connection to db failed !'));
-  
+
 //== Port
 app.listen(3000);
