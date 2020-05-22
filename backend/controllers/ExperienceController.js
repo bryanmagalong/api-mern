@@ -39,3 +39,9 @@ exports.updateOne = (req, res) => {
     .then(() => res.status(200).json('Updated !'))
     .catch((err) => res.status(400).json({message: err}));
 };
+
+exports.deleteOne = (req, res) => {
+  Experience.findByIdAndDelete(req.params.experienceId)
+    .then(() => res.status(200).json('Deleted !'))
+    .catch((err) => res.status(400).json({message: err}));
+};
