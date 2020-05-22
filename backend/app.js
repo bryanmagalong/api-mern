@@ -6,8 +6,14 @@ const app = express();
 
 //== Routes import
 const mainRoute = require('./routes/main');
+const experiencesRoute = require('./routes/experiences');
+
+// body requests parser
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 app.use('/', mainRoute);
+app.use('/api/experiences', experiencesRoute);
 
 //== DB connection
 mongoose.connect(
